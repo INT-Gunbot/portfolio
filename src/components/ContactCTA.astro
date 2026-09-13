@@ -1,8 +1,11 @@
+---
+const base = import.meta.env.BASE_URL + '/';
+---
 <section class="px-6 py-16 text-center">
   <div class="mx-auto max-w-2xl">
     <h2 class="font-display text-3xl">有想法？聊聊</h2>
     <p class="mt-4 text-ink/70">欢迎通过邮件或社交平台联系我。</p>
-    <a href="/contact" class="mt-6 inline-block rounded-full bg-teal px-6 py-3 font-medium text-ink hover:opacity-90 transition">
+    <a href={`${base}contact`} class="mt-6 inline-block rounded-full bg-teal px-6 py-3 font-medium text-ink hover:opacity-90 transition">
       联系方式
     </a>
   </div>

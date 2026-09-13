@@ -8,6 +8,7 @@ interface Props {
 
 const { project } = Astro.props;
 const { title, description, category, tags, links, cover } = project.data;
+const base = import.meta.env.BASE_URL + '/';
 
 const categoryLabel: Record<string, string> = {
   code: '代码',
@@ -35,7 +36,7 @@ const categoryColor: Record<string, string> = {
   <div class="flex flex-1 flex-col gap-2 p-5">
     <div class="flex items-center justify-between">
       <h3 class="font-display text-xl">
-        <a href={`/projects/${project.id}`} class="hover:text-coral transition">{title}</a>
+        <a href={`${base}projects/${project.id}`} class="hover:text-coral transition">{title}</a>
       </h3>
       <span class="rounded-full bg-cream px-2 py-0.5 text-xs text-ink/60">{categoryLabel[category] ?? category}</span>
     </div>
@@ -48,7 +49,7 @@ const categoryColor: Record<string, string> = {
       </ul>
     )}
     <div class="mt-auto flex flex-wrap gap-3 pt-2 text-sm">
-      <a href={`/projects/${project.id}`} class="font-medium text-coral hover:underline">查看详情</a>
+      <a href={`${base}projects/${project.id}`} class="font-medium text-coral hover:underline">查看详情</a>
       {links?.demo && <a href={links.demo} class="font-medium text-coral hover:underline">演示</a>}
       {links?.repo && <a href={links.repo} class="font-medium text-coral hover:underline">仓库</a>}
       {links?.article && <a href={links.article} class="font-medium text-coral hover:underline">文章</a>}

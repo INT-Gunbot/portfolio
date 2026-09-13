@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL + '/';
 const name = '步桐';
 const tagline = '南京大学 2027届 信息管理学院';
 ---
@@ -14,10 +15,10 @@ const tagline = '南京大学 2027届 信息管理学院';
     <h1 class="font-display text-5xl sm:text-6xl">{name}</h1>
     <p class="mt-4 text-xl text-ink/70">{tagline}</p>
     <div class="mt-8 flex justify-center gap-4">
-      <a href="/projects" class="rounded-full bg-coral px-6 py-3 font-medium text-white hover:opacity-90 transition">
+      <a href={`${base}projects`} class="rounded-full bg-coral px-6 py-3 font-medium text-white hover:opacity-90 transition">
         看看作品
       </a>
-      <a href="/contact" class="rounded-full border border-ink/20 px-6 py-3 font-medium hover:border-coral hover:text-coral transition">
+      <a href={`${base}contact`} class="rounded-full border border-ink/20 px-6 py-3 font-medium hover:border-coral hover:text-coral transition">
         联系我
       </a>
     </div>

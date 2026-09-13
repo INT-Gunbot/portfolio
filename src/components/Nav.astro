@@ -1,15 +1,16 @@
 ---
+const base = import.meta.env.BASE_URL + '/';
 const links = [
-  { href: '/', label: '首页' },
-  { href: '/projects', label: '作品' },
-  { href: '/blog', label: '博客' },
-  { href: '/resume', label: '简历' },
-  { href: '/contact', label: '联系' },
+  { href: base, label: '首页' },
+  { href: `${base}projects`, label: '作品' },
+  { href: `${base}blog`, label: '博客' },
+  { href: `${base}resume`, label: '简历' },
+  { href: `${base}contact`, label: '联系' },
 ];
 ---
 <header class="sticky top-0 z-10 bg-cream/90 backdrop-blur border-b border-ink/10">
   <nav class="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
-    <a href="/" class="font-display text-xl text-ink">我的个人网站</a>
+    <a href={base} class="font-display text-xl text-ink">我的个人网站</a>
     <ul class="hidden sm:flex gap-6">
       {links.map((link) => (
         <li>
