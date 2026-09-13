@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FloatingShapes from '../components/FloatingShapes.astro';
+
+const contacts = [
+  { label: '邮箱', value: '341999963@qq.com', href: 'mailto:341999963@qq.com' },
+  { label: 'GitHub', value: 'github.com/INT-Gunbot', href: 'https://github.com/INT-Gunbot' },
+  { label: '微信', value: '13354362515' },
+];
+---
+<BaseLayout title="联系 | 我的作品集" description="联系方式">
+  <section class="relative overflow-hidden px-6 py-16">
+    <FloatingShapes />
+    <div class="relative mx-auto max-w-xl">
+      <h1 class="font-display text-4xl">联系我</h1>
+      <p class="mt-4 text-ink/70">欢迎通过以下方式联系我。</p>
+      <ul class="mt-8 flex flex-col gap-4">
+        {contacts.map((c) => (
+          <li class="flex items-center justify-between rounded-2xl border border-ink/10 bg-white p-5">
+            <span class="font-medium">{c.label}</span>
+            {c.href ? (
+              <a href={c.href} class="text-coral hover:underline">{c.value}</a>
+            ) : (
+              <span class="text-ink/70">{c.value}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

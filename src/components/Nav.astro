@@ -1,0 +1,56 @@
+---
+const links = [
+  { href: '/', label: '首页' },
+  { href: '/projects', label: '作品' },
+  { href: '/blog', label: '博客' },
+  { href: '/resume', label: '简历' },
+  { href: '/contact', label: '联系' },
+];
+---
+<header class="sticky top-0 z-10 bg-cream/90 backdrop-blur border-b border-ink/10">
+  <nav class="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-display text-xl text-ink">我的个人网站</a>
+    <ul class="hidden sm:flex gap-6">
+      {links.map((link) => (
+        <li>
+          <a href={link.href} class="font-medium text-ink/70 hover:text-coral transition">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <button
+      id="nav-toggle"
+      type="button"
+      class="sm:hidden text-ink"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="打开菜单"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="sm:hidden hidden px-6 pb-4">
+    <ul class="flex flex-col gap-3">
+      {links.map((link) => (
+        <li>
+          <a href={link.href} class="font-medium text-ink/70 hover:text-coral transition">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+  });
+</script>

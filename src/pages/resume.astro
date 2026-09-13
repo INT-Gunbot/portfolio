@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FloatingShapes from '../components/FloatingShapes.astro';
+
+const skills = ['Python', 'SQL', 'Tableau', 'Excel', 'Figma', 'Vibe Coding'];
+
+const projects = [
+  {
+    name: 'SoulTuner Agent',
+    desc: '基于自然语言的音乐推荐智能体（LangGraph + Neo4j + Next.js）',
+    href: '/projects/code-soultuner-agent',
+  },
+  {
+    name: '个人作品集网站',
+    desc: '基于 Astro 7 + Tailwind CSS 4 构建的个人名片网站',
+    href: '/projects/code-portfolio-website',
+  },
+];
+---
+<BaseLayout title="简历 | 我的作品集" description="步桐的个人简历">
+  <section class="relative overflow-hidden px-6 py-16">
+    <FloatingShapes />
+    <div class="relative mx-auto max-w-2xl">
+      <h1 class="font-display text-4xl">简历</h1>
+
+      <div class="mt-8 rounded-2xl border border-ink/10 bg-white p-6">
+        <h2 class="font-display text-2xl">步桐</h2>
+        <p class="mt-1 text-ink/70">南京大学 · 2027届 · 信息管理学院 · 信息管理与信息系统 </p>
+        <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <a href="mailto:341999963@qq.com" class="text-coral hover:underline">341999963@qq.com</a>
+          <a href="https://github.com/INT-Gunbot" class="text-coral hover:underline">GitHub</a>
+          <span class="text-ink/60">微信 13354362515</span>
+        </div>
+      </div>
+
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">教育经历</h2>
+        <div class="mt-3 rounded-2xl border border-ink/10 bg-white p-5">
+          <div class="flex items-center justify-between">
+            <span class="font-medium">南京大学 · 信息管理学院</span>
+            <span class="text-sm text-ink/50">2023 - 2027</span>
+          </div>
+          <p class="mt-1 text-sm text-ink/70">主修课程：数据科学与数据分析、概率论与数理统计、数据结构、信息经济学、信息分析、离散数学等</p>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">技能</h2>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <li class="rounded-full border border-ink/10 bg-white px-3 py-1 text-sm text-ink/70">{skill}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">实习经历</h2>
+        <div class="mt-3 rounded-2xl border border-ink/10 bg-white p-5">
+          <div class="flex items-center justify-between gap-3">
+            <span class="font-medium">杭州有船出海有限公司 · 数据分析</span>
+            <span class="shrink-0 text-sm text-ink/50">2026.06 – 2026.08</span>
+          </div>
+          <p class="mt-2 text-sm text-ink/70">负责跨境 AI 商家运营平台 Merry 全链路业务数据分析，支撑店铺经营、选品、竞品智能诊断落地等多业务场景。</p>
+          <ul class="mt-4 flex flex-col gap-4 text-sm text-ink/80">
+            <li class="border-t border-ink/5 pt-3">
+              <p class="font-medium text-ink">一、搭建分层数据底座，统一全渠道数据治理标准</p>
+              <p class="mt-1"><span class="text-ink/50">场景：</span>产品 Merry 处于早期阶段，各跨境电商平台（EchoTik 等）的原始数据散落、口径不一，数据完整度仅 87%，数据类商家投诉频发，下游 Agent 调用链路缺乏可靠的数据基座。</p>
+              <p class="mt-1"><span class="text-ink/50">动作：</span>设计 ODS-DWD-DWS 三层数据架构，统一多站点商品、店铺、达人短视频等数据的治理标准；基于 PostgreSQL + TimescaleDB 编写 10 张业务核心表 DDL，建立三层时序宽表体系，支撑日级增量写入与历史回溯查询；开发三层漏斗采集逻辑与脏数据清洗管线，实现去重、指数退避重试机制、Redis 令牌桶限流，保障数据采集的稳定性与可控性；搭建数据质量监控告警脚本，对缺失率、重复率、延迟等指标设置阈值自动预警。</p>
+              <p class="mt-1"><span class="text-ink/50">结果：</span>数据完整度从 87% 提升至 95%，数据类商家投诉下降 45%，下游 Agent 获得稳定可靠的时序数据源。</p>
+            </li>
+            <li class="border-t border-ink/5 pt-3">
+              <p class="font-medium text-ink">二、构建全域指标体系，支撑平台自动化诊断</p>
+              <p class="mt-1"><span class="text-ink/50">场景：</span>平台此前缺乏统一的分析口径，分析师大量时间消耗在取数工作上，商家面临的商品选品、店铺经营诊断、竞品分析需求依赖人工经验，自动化诊断覆盖率不到 42%。</p>
+              <p class="mt-1"><span class="text-ink/50">动作：</span>构建商品需求、店铺经营、竞品竞争三大指标字典，统一分位数、增速、HHI 集中度等统计口径，消除跨团队数据理解偏差；自研爆品潜力、店铺健康度、竞品护城河 3 个评分模型，落地 18 维商品时序特征（销量趋势、价格弹性、复购率等）与 16 维竞品经营特征（市场份额变化、定价策略、上新节奏等）；将指标与特征封装为标准化取数接口，供下游 Agent 与分析看板直接调用。</p>
+              <p class="mt-1"><span class="text-ink/50">结果：</span>平台自动化诊断覆盖率从 42% 提升至 85%，分析师取数工作量减少 60% 以上，显著释放了团队的分析带宽。</p>
+            </li>
+            <li class="border-t border-ink/5 pt-3">
+              <p class="font-medium text-ink">三、基于离线预计算与模型输出提炼业务规则，为四大 Agent 提供决策依据</p>
+              <p class="mt-1"><span class="text-ink/50">场景：</span>四个业务 Agent（新品雷达、测品助手、竞品意图、市场需求）。</p>
+              <p class="mt-1"><span class="text-ink/50">动作：</span>使用基于 APScheduler 的日度定时批处理管线，预计算类目基准、商品生命周期阶段、时序趋势数据等高频复用特征；读取 Prophet、STL 分解、聚类、异常检测等模型输出，提炼增长信号识别、价格战检测、新竞品入侵预警等业务规则；采取两段式响应策略，异步输出快速报告和精准报告，减少商家等待时间；决策封装标准化特征接口，按各 Agent 需求分别输出定制品维度与决策信号，实现「模型输出 → 规则蒸馏 → Agent 决策」的完整链路。</p>
+              <p class="mt-1"><span class="text-ink/50">结果：</span>Agent 均获得稳定的每日决策输入，为平台从「人工经验驱动」向「数据 + 模型驱动」的转型提供了工程基础。</p>
+            </li>
+            <li class="border-t border-ink/5 pt-3">
+              <p class="font-medium text-ink">四、搭建可视化看板与效果验证闭环，量化 AI 业务收益</p>
+              <p class="mt-1"><span class="text-ink/50">场景：</span>AI 建议的实际业务价值缺乏量化衡量，商家对智能体策略的采纳效果不透明，特征与规则迭代缺少数据反馈驱动。</p>
+              <p class="mt-1"><span class="text-ink/50">动作：</span>搭建商家自助诊断看板与 AI 效果监控大盘，全链路展示爆品榜单、竞品格局、销量预测与策略落地效果数据；设计 A/B 实验框架与 7 天滚动预测回溯评估体系（以 MAPE ≤ 30% 为达标线），量化 AI 建议的业务增量；独立承接头部大卖专项 SQL 深度分析，闭环解决数据口径不一致、智能体策略失真等线上问题；驱动特征与规则持续迭代，形成「看板呈现 → 实验验证 → 问题诊断 → 策略优化」的完整闭环。</p>
+              <p class="mt-1"><span class="text-ink/50">结果：</span>商家自主分析使用率提升 37%；采纳 AI 建议的商家平均 GMV 上升 22%、广告 ROI 上升 27%、滞销库存减少 35%、毛利提高 18%。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">项目经历</h2>
+        <ul class="mt-3 flex flex-col gap-3">
+          {projects.map((p) => (
+            <li>
+              <a href={p.href} class="block rounded-2xl border border-ink/10 bg-white p-5 hover:-translate-y-0.5 hover:shadow-md transition">
+                <span class="font-medium">{p.name}</span>
+                <p class="mt-1 text-sm text-ink/70">{p.desc}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      
+    </div>
+  </section>
+</BaseLayout>

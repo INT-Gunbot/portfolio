@@ -1,0 +1,25 @@
+---
+const name = '步桐';
+const tagline = '南京大学 2027届 信息管理学院';
+---
+<section class="relative overflow-hidden px-6 py-24 text-center">
+  <div class="absolute -top-10 -left-10 h-48 w-48 rounded-full bg-coral/20 blur-3xl animate-drift" aria-hidden="true"></div>
+  <div class="absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-teal/20 blur-3xl animate-float-slow" aria-hidden="true"></div>
+  <div class="absolute top-24 left-[12%] h-3 w-3 rounded-full bg-coral/40 animate-float" aria-hidden="true"></div>
+  <div class="absolute top-44 right-[14%] h-6 w-6 rounded-full border-2 border-teal/40 animate-float-slow" aria-hidden="true"></div>
+  <div class="absolute bottom-32 left-[18%] h-4 w-4 rounded-full bg-sun/60 animate-drift" aria-hidden="true"></div>
+  <div class="absolute top-1/3 left-[8%] h-5 w-5 rounded-full border-2 border-sun/50 animate-float-slow" style="animation-delay: -6s" aria-hidden="true"></div>
+  <div class="absolute bottom-20 right-[24%] h-2.5 w-2.5 rounded-full bg-coral/30 animate-float" style="animation-delay: -4s" aria-hidden="true"></div>
+  <div class="relative">
+    <h1 class="font-display text-5xl sm:text-6xl">{name}</h1>
+    <p class="mt-4 text-xl text-ink/70">{tagline}</p>
+    <div class="mt-8 flex justify-center gap-4">
+      <a href="/projects" class="rounded-full bg-coral px-6 py-3 font-medium text-white hover:opacity-90 transition">
+        看看作品
+      </a>
+      <a href="/contact" class="rounded-full border border-ink/20 px-6 py-3 font-medium hover:border-coral hover:text-coral transition">
+        联系我
+      </a>
+    </div>
+  </div>
+</section>

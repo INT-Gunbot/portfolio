@@ -1,0 +1,35 @@
+---
+const filters = [
+  { value: 'all', label: '全部' },
+  { value: 'code', label: '代码' },
+  { value: 'design', label: '设计' },
+  { value: 'writing', label: '写作' },
+];
+---
+<div class="flex flex-wrap gap-2" role="group" aria-label="作品类型筛选">
+  {filters.map((f) => (
+    <button
+      type="button"
+      data-filter={f.value}
+      aria-pressed={f.value === 'all' ? 'true' : 'false'}
+      class="rounded-full border border-ink/20 px-4 py-1.5 text-sm font-medium hover:border-coral hover:text-coral transition aria-pressed:bg-coral aria-pressed:text-white aria-pressed:border-coral"
+    >
+      {f.label}
+    </button>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-category]');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'all';
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      cards.forEach((card) => {
+        card.hidden = filter !== 'all' && card.dataset.category !== filter;
+      });
+    });
+  });
+</script>

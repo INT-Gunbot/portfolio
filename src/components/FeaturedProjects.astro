@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => {
+    const aOrder = a.data.order ?? Number.NEGATIVE_INFINITY;
+    const bOrder = b.data.order ?? Number.NEGATIVE_INFINITY;
+    if (aOrder !== bOrder) return bOrder - aOrder;
+    return (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0);
+  });
+---
+<section class="px-6 py-16">
+  <div class="mx-auto max-w-5xl">
+    <h2 class="font-display text-3xl">精选作品</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+    <div class="mt-8 text-center">
+      <a href="/projects" class="font-medium text-coral hover:underline">查看全部作品 →</a>
+    </div>
+  </div>
+</section>

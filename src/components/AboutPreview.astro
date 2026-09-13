@@ -1,0 +1,19 @@
+---
+const skills = ['Python', 'SQL', 'Tableau', 'Excel' , 'Figma', 'Vibe Coding'];
+---
+<section class="px-6 py-16 bg-sun/20">
+  <div class="mx-auto max-w-5xl">
+    <div class="flex items-center justify-between gap-4">
+      <h2 class="font-display text-3xl">关于我</h2>
+      <a href="/resume" class="shrink-0 rounded-full border border-ink/20 px-4 py-2 text-sm font-medium hover:border-coral hover:text-coral transition">查看简历 →</a>
+    </div>
+    <p class="mt-4 max-w-2xl text-ink/70">
+      我是步桐，南京大学信息管理学院2027届毕业生。
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {skills.map((skill) => (
+        <li class="rounded-full bg-white px-3 py-1 text-sm text-ink/70">{skill}</li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FloatingShapes from '../../components/FloatingShapes.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout title="博客 | 我的作品集" description="我的文章列表">
+  <section class="relative overflow-hidden px-6 py-16">
+    <FloatingShapes />
+    <div class="relative mx-auto max-w-2xl">
+      <h1 class="font-display text-4xl">博客</h1>
+      <ul class="mt-8 flex flex-col gap-6">
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`} class="block rounded-2xl border border-ink/10 bg-white p-5 hover:-translate-y-1 hover:shadow-md transition">
+              <time class="text-sm text-ink/50" datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('zh-CN')}
+              </time>
+              <h2 class="mt-1 font-display text-xl">{post.data.title}</h2>
+              <p class="mt-2 text-sm text-ink/70">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
