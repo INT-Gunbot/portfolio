@@ -1,5 +1,5 @@
 ---
-title: SoulTuner Agent
+title: Musicion Agent
 cover: ./cover.png
 order: 9
 description: 基于自然语言的音乐推荐智能体，结合 LangGraph、Neo4j 图数据库与混合检索，把一句话需求转换为可解释的推荐结果。
@@ -7,14 +7,14 @@ category: code
 tags: ["Python", "LangGraph", "Neo4j", "Next.js", "Docker"]
 links:
 
-  repo: https://github.com/INT-Gunbot/SoulTuner-Agent
+  repo: https://github.com/INT-Gunbot/Musicion-Agent
 featured: true
 date: 2026-09-06
 ---
 
 ## 🎯 这是什么
 
-SoulTuner 是一个开源音乐推荐智能体。你只需用一句话描述心情、场景、声音、喜欢的歌手，或者明确说出不想听什么。系统会把这句话转换成检索计划，在音乐库中寻找歌曲，并解释推荐理由。
+Musicion 是一个开源音乐推荐智能体。你只需用一句话描述心情、场景、声音、喜欢的歌手，或者明确说出不想听什么。系统会把这句话转换成检索计划，在音乐库中寻找歌曲，并解释推荐理由。
 
 - 🗣️ **说人话就行** — "今天心情特别差，想一个人静一静"，不需要你先想好流派和关键词
 - 🔎 **不只依赖关键词** — 同时参考歌曲知识和听感相似度，避免只用一种方式找歌
@@ -34,7 +34,7 @@ SoulTuner 是一个开源音乐推荐智能体。你只需用一句话描述心�
 
 大语言模型负责规划“应该怎样找”，确定性的程序负责在执行前检查计划。模型不会绕过曲库，直接虚构一份歌单。
 
-### 为 SoulTuner 训练的 Planner
+### 为 Musicion 训练的 Planner
 
 默认配置可以直接调用 Qwen3.7 Plus API。项目同时提供一个针对自身检索规则训练的 35B Planner。在独立保留的 500 条规划评测中，训练后的 Planner 有 **99.4%** 的输出符合结构要求，**95.6%** 的请求能够选择正确的意图与检索路线。这些数据衡量的是规划能力，不等同于主观音乐审美评分。
 
@@ -63,22 +63,22 @@ MUSIC_DATA_PATH=../data
 然后启动，打开 `http://localhost:3003`：
 
 ```powershell
-.\soultuner.ps1 up gpu
+.\musicion.ps1 up gpu
 ```
 
-没有 NVIDIA 显卡就用 `.\soultuner.ps1 up cpu`。CUDA/ROCm GPU 档默认由 MuQ
+没有 NVIDIA 显卡就用 `.\musicion.ps1 up cpu`。CUDA/ROCm GPU 档默认由 MuQ
 理解中文语义、OMAR 做声学重排；资源受限的纯 CPU 档才使用 M2D-CLAP。
 
 想换模型厂商（SiliconFlow / Google / 火山 / 本地 SGLang、vLLM、Ollama），改 `MAIN_LLM_PROVIDER` 和 `MODEL_NAME` 并填对应 Key 即可，也可以启动后在前端「系统设置」里改。
 
 ### 选择 Planner
 
-SoulTuner 既可以使用 API 模型，也可以连接自己部署的 OpenAI 兼容模型服务。大模型可以留在 GPU 服务器上，其余应用仍然运行在普通电脑上。
+Musicion 既可以使用 API 模型，也可以连接自己部署的 OpenAI 兼容模型服务。大模型可以留在 GPU 服务器上，其余应用仍然运行在普通电脑上。
 
 | 方案 | 适合什么情况 | 需要什么 |
 |---|---|---|
 | Qwen3.7 Plus API | 最省事的首次运行 | API Key，不需要本地大显卡 |
-| SoulTuner V4.2 35B | 项目专用规划、私有部署 | 一台高显存推理服务器 |
+| Musicion V4.2 35B | 项目专用规划、私有部署 | 一台高显存推理服务器 |
 | 安全演示 | 展示界面和检索流程 | 仅需 CPU，不调用外部模型 |
 
 模型切换、完整性校验、服务启动和压测工具见[自托管部署包](deploy/self_hosted_35b)。主 Docker 部署支持 CPU 与 NVIDIA CUDA；如果使用 AMD GPU，可以叠加 [ROCm 部署配置](docs/AMD_ROCM_DEPLOYMENT.md)，不需要改业务代码。
@@ -88,11 +88,11 @@ SoulTuner 既可以使用 API 模型，也可以连接自己部署的 OpenAI 兼
 
 | 命令 | 用途 |
 |---|---|
-| `.\soultuner.ps1 doctor` | 检查各服务是否正常 |
-| `.\soultuner.ps1 down` | 停止所有容器 |
-| `.\soultuner.ps1 logs` | 查看服务日志 |
-| `.\soultuner.ps1 test` | 运行单元测试 |
-| `.\soultuner.ps1 ingest gpu` | 用 GPU Worker 处理待入库歌曲 |
+| `.\musicion.ps1 doctor` | 检查各服务是否正常 |
+| `.\musicion.ps1 down` | 停止所有容器 |
+| `.\musicion.ps1 logs` | 查看服务日志 |
+| `.\musicion.ps1 test` | 运行单元测试 |
+| `.\musicion.ps1 ingest gpu` | 用 GPU Worker 处理待入库歌曲 |
 | `python scripts/dev/start_backend.py` | 仅启动后端，供本地调试 |
 
 </details>
