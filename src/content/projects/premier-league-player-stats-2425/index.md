@@ -7,7 +7,7 @@ category: code
 tags: ["Python", "Machine Learning", "Neo4j", "Next.js", "Docker"]
 links:
 
-  repo: https://github.com/INT-Gunbot/Musicion-Agent
+  repo: https://github.com/INT-Gunbot/premier-league-player-stats-2425
 featured: true
 date: 2026-09-06
 ---
