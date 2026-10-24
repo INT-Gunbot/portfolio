@@ -1,5 +1,6 @@
 ---
 title: 清北鸭腿事件 · 全链路舆情分析
+cover: cover.png
 order: 6
 description: 针对「鹅腿阿姨以鸭充鹅」热点事件（全网 21 万+ 条声量）的独立舆情分析项目：自建「采集—清洗—建模—可视化」Python 管线，LDA 提取 6 大议题、SnowNLP+情感词典量化负面率 63.6%，并按时间 / 平台 / 群体三维下钻，交付 ECharts 交互式报告。
 category: code
