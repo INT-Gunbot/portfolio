@@ -6,6 +6,7 @@ description: 针对「鹅腿阿姨以鸭充鹅」热点事件（全网 21 万+ �
 category: code
 tags: ["Python", "jieba", "LDA", "情感分析", "TextRank", "ECharts"]
 links:
+  demo: https://int-gunbot.github.io/portfolio/projects/qingbei-duckleg-sentiment/report.html
   repo: https://github.com/INT-Gunbot/qingbei-duckleg-sentiment
 featured: true
 date: 2026-06-15
