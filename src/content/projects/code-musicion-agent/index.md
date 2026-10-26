@@ -6,7 +6,7 @@ description: 基于自然语言的音乐推荐智能体，结合 LangGraph、Neo
 category: code
 tags: ["Python", "LangGraph", "Neo4j", "Next.js", "Docker"]
 links:
-
+  demo: https://musicion-agent-demo.app.workbuddy.host/?sharecode=7GTHJ44QLV
   repo: https://github.com/INT-Gunbot/Musicion-Agent
 featured: true
 date: 2026-09-06
